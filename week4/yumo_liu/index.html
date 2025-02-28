@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<body>
+    <br>
+    <h1>Factory Name: <input type=""text"></h1>
+    <br>
+
+    <div id="timer">
+        <h1>Challenge Timer</h1>
+        <h2>Click to start a 30 second timer. See how many cookies you can make!</h2>
+        <button onclick="setTimeout(challengeTimer, 300);">Try Me</button>
+    </div>
+
+    <div id="effects">
+    <br>
+        <button onclick="clearEffect(event);">Clear saturation</button>
+    </div>
+    <br>
+    <h1>
+        <span id="counter">0</span> cookies
+    </h1>
+
+    <img 
+    id="cookieImage"
+    src="https://images.cdn.us-central1.gcp.commercetools.com/4e5a974e-1287-4368-811f-41d06eb6c548/Chocolate%20Chip%20Silo%20-t71xMOs7.png" onclick="addOneToCounter()" 
+    />
+    
+    <div id="upgrade">
+        <h1>Upgrades</h1>
+        <h2>5 MORE COOKIES per click</h2>
+        <h2>Trade cookies for this upgrade!</h2>
+        <h3>Can purchase multiple times</h3>
+        <button onclick=" clickerUpgrade();">Purchase</button>
+    </div>
+
+    <br>
+    <h2>Click on me. I will eat all your cookies.</h2>
+    <img
+    src="https://www.mashed.com/img/gallery/the-cookie-monsters-cookies-arent-what-you-think/intro-1642500635.jpg" onclick="resetCounter()"
+    />
+
+
+
+<script>
+var sound_click = new Audio('mouse_click.mp3');
+var sound_eat = new Audio('cookie_crunch.mp3');
+
+var clicker_update = 0;
+var price = 1;
+
+function addOneToCounter(){
+    var img = document.getElementById("cookieImage")
+
+    if (clicker_update === 0) {
+        document.getElementById("counter").innerText = parseInt(document.getElementById("counter").innerText) + 1
+    } else {
+        document.getElementById("counter").innerText = parseInt(document.getElementById("counter").innerText) + clicker_update * 5
+    }
+    sound_click.currentTime = 0
+    sound_click.play();
+
+    saturationValue += 1
+    img.style.filter = "saturate(2)";
+    img.style.transition = "filter 0.3s ease";
+}
+
+function clearEffect(){
+    var img = document.getElementById("cookieImage")
+    img.style.filter = "saturate(1)";
+}
+
+function resetCounter(){
+    document.getElementById("counter").innerText = 0
+    sound_eat.play();
+}
+
+function challengeTimer(){
+    const cookie_count = parseInt(document.getElementById("counter").innerText)
+    alert(`Time's Up. You made ${cookie_count} cookies in 30 seconds` );
+}
+
+function clickerUpgrade(){
+    if (parseInt(document.getElementById("counter").innerText) >= price * 50) {
+        document.getElementById("counter").innerText = parseInt(document.getElementById("counter").innerText) - 50
+        clicker_update += 1
+        price += 1
+
+      } else {
+        alert(`You need ${price * 50} cookies for this upgrade`);
+      }
+}
+</script>
+
+</body>
+</html>
+
