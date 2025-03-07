@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+    font-family: "Courier New";
+    background: #FFC0CB;
+    animation-name: test;
+    animation-duration: 4s;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+    color: black;
+}
+
+img {
+    width: 150px;
+}

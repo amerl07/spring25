@@ -1,0 +1,25 @@
+
+
+body {
+    text-align: center;
+    font-family: 'Arial';
+    font-weight: bold;
+    background-color: #fdecc7;
+}
+
+h2 {
+    font-family: 'Arial';
+    color: black;
+    font-weight: normal;
+}
+
+
+
+
+.cookie {
+    background-color: #ffd986;
+    height:75%;
+    width:100%;
+    position: relative;
+}
+

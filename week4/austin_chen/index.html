@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Counter</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 200px;
+            margin-bottom: 20px;
+        }
+
+        #cookieImage {
+            width: 1000px; 
+            height: auto;
+            cursor: pointer;
+        }
+
+        .rgb-effect {
+            animation: rgbAnimation 1s infinite;
+        }
+
+        @keyframes rgbAnimation {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .win-animation {
+            animation: winGlow 1.5s ease-in-out;
+        }
+
+        @keyframes winGlow {
+            0% { box-shadow: 0 0 10px lime; }
+            50% { box-shadow: 0 0 40px lime; }
+            100% { box-shadow: 0 0 10px lime; }
+        }
+
+        .lose-animation {
+            animation: loseShake 0.5s ease-in-out;
+        }
+
+        @keyframes loseShake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        #bet-section {
+            margin-top: 100px;
+            font-size: 100px;
+        }
+
+        input {
+            font-size: 90px;
+            padding: 5px;
+            width: 160px;
+        }
+
+        button {
+            font-size: 90px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1><span id="counter">0</span> cookies</h1>
+
+    <div id="bet-section">
+        <label for="betAmount">Bet Amount:</label>
+        <input type="number" id="betAmount" min="1" value="1">
+        <button onclick="placeBet()">Bet Cookies</button>
+    </div>
+
+    <br><br>
+
+    <img id="cookieImage" src="https://www.inkatrinaskitchen.com/wp-content/uploads/2011/04/Cookie-Monster-Cookies.jpg" onclick="addOneToCounter()" />
+
+    <script src="script.js"></script>
+</body>
+</html>

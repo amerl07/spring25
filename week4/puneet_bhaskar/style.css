@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    font-family: 'Segoe UI';
+    background: #F0EAD6;
+    color: black;
+}
+
+#bg_vid {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2;
+  }
+
+.overlay {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background: rgba(0,0,0,0);
+    z-index: -1;
+}

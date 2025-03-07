@@ -37,6 +37,7 @@ class Clicker {
         if(currentCount >= cost){
             document.getElementById("counter").innerText = currentCount - cost;
             this.quantity++;
+            spawnBouncingImage(this.name);
         }
     }
 
@@ -85,5 +86,52 @@ console.log(clickers);
 
 function buyClicker(name){  
     clickers.get(name).buy();
+    
 }
+
+document.getElementById("cookie").addEventListener("click", function () {
+    this.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+        this.style.transform = "scale(1)";
+    }, 100);
+});
+
+
+function spawnBouncingImage(type) {
+    const imgSrc = {
+        clicker: "clicker.png",
+        doge: "doge.png",
+        capybara: "capybara.png"
+    };
+
+    const img = document.createElement("img");
+    img.src = imgSrc[type] || "default.png";
+    img.classList.add("bouncing-image");
+
+    document.body.appendChild(img);
+
+    let x = Math.random() * (window.innerWidth - 100);
+    let y = Math.random() * (window.innerHeight - 100);
+    let dx = Math.random() * 4 + 2; // Randomized speed for variation
+    let dy = Math.random() * 4 + 2;
+
+    function moveImage() {
+        x += dx;
+        y += dy;
+
+        // Bounce off the edges
+        if (x <= 0 || x + 100 >= window.innerWidth) dx *= -1;
+        if (y <= 0 || y + 100 >= window.innerHeight) dy *= -1;
+
+        img.style.left = `${x}px`;
+        img.style.top = `${y}px`;
+
+        requestAnimationFrame(moveImage);
+    }
+
+    moveImage();
+}
+
+
 

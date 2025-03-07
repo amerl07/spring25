@@ -1,0 +1,36 @@
+.logo{
+  height: 10rem;
+}
+
+.cookie-container{
+  
+}
+
+.cookie-container img{
+  width: 100%;
+}
+
+.cookie-container button{
+  height: 2rem;
+  width: 4rem;
+  border: none;
+  background-color: green;
+  color: white;
+  font-size: large;
+  transition: background-color 0.3s color 0.3s border 0.3s;
+}
+
+.cookie-container button:hover{
+  background-color: white;
+  color: green;
+  cursor: pointer;
+}
+
+.cookie-container p{
+  font-size: 1rem;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

@@ -1,0 +1,50 @@
+body {
+    text-align: center;
+    font-family: 'Arial';
+    background: azure;
+    color: purple;
+}
+
+img {
+    width: 200px;
+}
+
+.content {
+    padding-top: 60px;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background-color: #575757;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.image-container img {
+    width: 30%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

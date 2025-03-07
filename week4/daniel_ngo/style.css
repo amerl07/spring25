@@ -1,0 +1,63 @@
+body {
+    text-align: center;
+    font-family:'Roboto';
+    font-size: larger;
+    background: skyblue; /* Idea #2: Added background color */
+    color: white;
+    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-width: 0.1px;
+    background-image: linear-gradient(teal, skyblue); /* Idea #7: Add gradient background */
+    min-height: 100vh; 
+    text-shadow: 2px 2px 4px darkslategrey;
+
+    /* font-weight: bold; */
+}
+
+img {
+    max-width: 80%;
+    /* width: 400px; */
+}
+
+h2, p {
+    margin: 0
+}
+
+.thumbnail {
+    top: -50px;
+    left: -35px;
+    cursor: pointer; 
+    -webkit-transition-property: all; 
+    -webkit-transition-duration: 0.3s; 
+    -webkit-transition-timing-function: ease; 
+}
+
+.thumbnail:hover { 
+    transform: scale(1.1); 
+}
+
+.thumbnail:active {
+    transform: scale(1.05);
+}
+
+.click-text {
+    position: absolute;
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px darkslategray;
+    opacity: 1;
+    pointer-events: none;
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.click-text.move {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+#upgrades {
+    display: flex;
+    justify-content: center;
+    gap: 175px;
+}
+

@@ -1,0 +1,34 @@
+<body>
+    <h1><span id="counter">0</span> cookies</h1>
+
+    <img 
+        src="https://pngimg.com/d/cookie_PNG13683.png" 
+        id="cookie" 
+        onclick="addOneToCounter()"
+        width="200"
+        style="cursor: pointer;"
+    />
+
+    <h2>Cookies Spent: <span id="cookiesSpent">0</span></h2>
+
+    <button id="spend5">Spend 5 Cookies</button>
+
+    <p id="unlockMessage">Spend 50 cookies to unlock 'Add Another Cookie'!</p>
+    <button id="addAnotherCookie" disabled>Add Another Cookie</button>
+
+    <div id="extraCookieContainer" style="display: none;">
+        <h1>Extra Cookie</h1>
+        <img src="https://png.pngtree.com/png-clipart/20201221/ourmid/pngtree-three-chocolate-chips-cookies-isolated-on-transparent-background-png-image_2593836.jpg" id="extraCookie" width="100"/>
+        <h2>Extra Cookies: <span id="extraCounter">0</span></h2>
+    </div>
+
+    <div id="cookieMonsterPopup" 
+        style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+        background: white; padding: 20px; border: 2px solid black; text-align: center;">
+        <img src="https://hips.hearstapps.com/hmg-prod/images/sesame-street-muppet-cookie-monster-poses-for-photographs-news-photo-1701191526.jpg" width="200"/>
+        <p>You are a Cookie Monster!!! >:(</p>
+        <button id="closePopupButton">Close</button> <!-- Added ID here -->
+    </div>
+
+    <script src="script.js"></script>
+</body>

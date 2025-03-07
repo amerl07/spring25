@@ -1,0 +1,10 @@
+style.css
+img {
+    width: 200px
+}
+body {
+    text-align: center;
+    font-family: 'Impact';
+    background: cadetblue;
+    color: darksalmon ;
+}
