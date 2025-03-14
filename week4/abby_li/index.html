@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Clicker Game</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: none;
+        }
+
+        html, body {
+            touch-action: none;
+            -webkit-text-size-adjust: 100%;
+            overscroll-behavior: none;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+        }
+
+        .game-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-sizing: border-box;
+            touch-action: none;
+        }
+
+        .cookie-wrapper {
+            touch-action: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .cookie-image {
+            touch-action: none;
+            pointer-events: none;
+            -webkit-touch-callout: none;
+            width: 200px;
+            transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .cookie-image.clicked {
+            transform: scale(1.1);
+        }
+
+        .mute-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1000;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .mute-button:hover {
+            opacity: 1;
+        }
+
+        .mute-button:focus {
+            outline: none;
+        }
+    </style>
+    <script>
+        // 使用 Web Audio API 来处理音效
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioContext = new AudioContext();
+        let audioBuffer = null;
+        let isMuted = false;
+
+        // 创建增益节点来控制音量
+        const gainNode = audioContext.createGain();
+        gainNode.connect(audioContext.destination);
+        gainNode.gain.value = 0.3;
+
+        // 加载音效
+        fetch('click.mp3')
+            .then(response => response.arrayBuffer())
+            .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+            .then(buffer => {
+                audioBuffer = buffer;
+            })
+            .catch(e => console.log('Error loading sound:', e));
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            const muteButton = document.getElementById('muteButton');
+            if (isMuted) {
+                gainNode.gain.value = 0;
+                muteButton.textContent = '🔇';
+                muteButton.title = 'Unmute';
+            } else {
+                gainNode.gain.value = 0.3;
+                muteButton.textContent = '🔊';
+                muteButton.title = 'Mute';
+            }
+        }
+
+        function playSound() {
+            if (!audioBuffer || isMuted) return;
+            
+            const source = audioContext.createBufferSource();
+            source.buffer = audioBuffer;
+            source.connect(gainNode);
+            source.start(0);
+        }
+
+        // 用户首次交互时恢复音频上下文
+        document.addEventListener('click', function initAudio() {
+            audioContext.resume();
+            document.removeEventListener('click', initAudio);
+        }, { once: true });
+    </script>
+</head>
+<body>
+    <button id="muteButton" class="mute-button" onclick="toggleMute()" title="Mute">🔊</button>
+    <div class="game-container">
+        <h1>
+            <span id="counter">0</span> cookies
+        </h1>
+        <div class="cookie-wrapper">
+            <img 
+                class="cookie-image" 
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7brjY52lzNXIpNia1Ea_FVQfSSXtv03tLVA&s" 
+                alt="Cookie"
+                draggable="false"
+            />
+        </div>
+        <div class="stats">
+            <p>Clicks per second: <span id="clicksPerSecond">0</span></p>
+            <p>Total clicks: <span id="totalClicks">0</span></p>
+            <p>Best CPS record: <span id="bestCPS">0</span></p>
+        </div>
+    </div>
+    <script>
+        // Removed zoom-prevention code
+
+        // 禁用右键菜单
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        }, false);
+
+        // 禁用选择
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        }, false);
+
+        // 修改点击音效和动画处理
+        function playClickAnimation(event) {
+            playSound();
+            
+            const cookie = document.querySelector('.cookie-image');
+            cookie.classList.add('clicked');
+            
+            setTimeout(() => {
+                cookie.classList.remove('clicked');
+            }, 100);
+        }
+
+        // 修改事件监听
+        const cookieWrapper = document.querySelector('.cookie-wrapper');
+        
+        // 移动设备使用触摸事件
+        cookieWrapper.addEventListener('touchstart', function(event) {
+            event.preventDefault(); // 防止触发点击事件
+            addOneToCounter(event);
+            playClickAnimation(event);
+        }, { passive: false });
+
+        // 桌面设备使用点击事件
+        cookieWrapper.addEventListener('click', function(event) {
+            // 如果是触摸设备触发的点击，忽略它
+            if (event.pointerType === 'touch') return;
+            addOneToCounter(event);
+            playClickAnimation(event);
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

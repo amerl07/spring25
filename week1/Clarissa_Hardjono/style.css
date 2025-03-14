@@ -9,6 +9,41 @@ body{
     color: palevioletred;
 }
 
+body {
+    background-image: url('https://i.pinimg.com/736x/ed/7d/61/ed7d6198b84a8b84db8f440ef3158daf.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+h1 {
+    color: grey;
+    font-style: italic;
+}
+
+.video-section {
+    text-align: center;
+    margin: 20px;
+}
+
+.video-link {
+    display: inline-block;
+    background-color: #ff4081;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.video-link:hover {
+    background-color: #e91e63;
+}
+
+.features button:hover {
+    background-color: #2980b9;
+}
+
 .hover-image {
     width: 150px;
     transition: transform 0.4s ease;

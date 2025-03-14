@@ -1,0 +1,46 @@
+body{
+  background-color: #27262b;
+  color: aliceblue;
+}
+
+.me{
+  width: 16rem;
+  border-radius: 0.5rem;
+  transition: width 0.5s
+}
+
+.me:hover{
+  width: 18rem;
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+  color: #FFD700; /* Changed to a more attractive green color */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 60px; /* Increased font size */
+  font-weight: bold;
+  margin: 0 5px;
+  transition: transform 0.8s, color 0.8s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Added text shadow */
+}
+
+ul:hover li {
+  transform: rotateY(360deg);
+  color: #EDEADE; /* Color change on hover */
+}
+
+.body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+}

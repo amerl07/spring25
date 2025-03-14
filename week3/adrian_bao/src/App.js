@@ -3,10 +3,22 @@ import logo from './cookie.png';
 import './App.css';
 import cookieSound from './win.mp3';
 
+function getRandomColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+}
+
+function getRandomGradient() {
+  const color1 = getRandomColor();
+  const color2 = getRandomColor();
+  const color3 = getRandomColor();
+  return `linear-gradient(${color1}, ${color2}, ${color3})`;
+}
+
 function App() {
   const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 
     'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 
     'ArrowRight', 'b', 'a'];
+  const [background, setBackground] = useState(getRandomGradient());
   const [counter, setCounter] = useState(0);
   const [doubleStatus, setDoubleStatus] = useState(false);
   // eslint-disable-next-line no-unused-vars
@@ -24,6 +36,14 @@ function App() {
       setDoubleStatus(true);
     }
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBackground(getRandomGradient());
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -59,7 +79,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" style={{ background }}>
       <header className="App-header">
         {message}
         <img src={logo} className="cookie-logo" alt="cookie" onClick={addOneToCounter} style={{ cursor: 'pointer', background: 'none' }}/>

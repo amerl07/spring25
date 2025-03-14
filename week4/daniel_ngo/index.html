@@ -1,0 +1,47 @@
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <h1> Cookie Clicker  </h1>
+</head>
+<br>
+<body>
+    <h2> 
+        <span id="count"> 0 </span> 
+        <span id="cookieString"> Cookies </span> 
+    </h2>
+    <p>
+        (click speed: <span id="cps"> 0</span> clicks/sec)
+    </p>
+    <p> 
+        (cookies generated per second: <span id="cookiesGen"> 0 </span> cookies)
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <span id="cookie"> 
+        <img src="https://static.vecteezy.com/system/resources/previews/035/490/024/non_2x/ai-generated-cookie-clipart-design-illustration-free-png.png" 
+        width="400px"
+        onclick="addToCount(), cookieAnimation()"
+        class="thumbnail"> 
+    </span>
+
+    <br>
+    <br>
+    <h1> <u> Store </u> </h1>
+    <span id="upgrades">
+        <div>
+            <p> Cursor Upgrade: <span id="cursorPrice"> 25 </span> Cookies </p>
+            <img src="https://static-00.iconduck.com/assets.00/cursor-press-icon-2048x2048-2vf741xf.png"
+            width="200px"
+            class="thumbnail">
+        </div>
+        <div>
+            <p> Cookie Production Upgrade: <span id="ovenPrice"> 100 </span> Cookies </p>
+            <img src="https://png.pngtree.com/png-clipart/20241015/original/pngtree-a-cartoon-oven-png-image_16324325.png"
+            width="200px"
+            class="thumbnail">
+        </div>
+    </span>
+
+    <script src="/week4/daniel_ngo/script.js"> </script>
+</body>

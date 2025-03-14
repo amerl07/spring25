@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1><span id="counter">0</span> cookies</h1>
+    <h2 id="clickSpeed">Speed: 0 clicks/sec</h2>
+    
+    <img id="cookie" src="https://pngimg.com/d/cookie_PNG13669.png" onclick="addOneToCounter()"/>
+
+    <button onclick="buyAutoclicker()">Buy Autoclicker (Cost: <span id="autoclickerCost">5</span> cookies)</button>
+    
+    <div id="store">
+        <h3>Store</h3>
+        <button onclick="buyMultiplier()">Buy Multiplier (Cost: <span id="multiplierCost">10</span> cookies)</button>
+    </div>
+
+    <div id="customization">
+        <h3>Customization</h3>
+        <button onclick="changeBackground()">Change Background</button>
+    </div>
+
+    <audio id="clickSound" src="click.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

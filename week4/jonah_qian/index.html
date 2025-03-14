@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head><link rel="stylesheet" href="style.css" /> </head>
+    <body>
+        <img
+            src="https://i.ytimg.com/vi/W8Un1v_NHJ4/maxresdefault.jpg"    
+        />
+        <h1>Shoot the Basketball!</h1>
+
+        <p id="opponentscore">Opponent Score: 113</p>
+        <p id="ourscore">
+            Our Score: <span id="counter">0</span>
+        </p>
+        <p id="introsentence">To help us win the game, help us score more buckets by clicking on the basketball below. <br/></p>
+        <p id="moreintro">For every shot, you might make a two pointer, a three pointer, and you might also miss. <br/> You have a 50-50 chance of making a shot, and for every shot you make, there's a 50% chance of being a two pointer and a 50% chance of being a three pointer.  <br/> <br/> </p>
+
+        <p id="addedfeaturetraining">
+            You may also choose to improve your technique by training. <br/> 
+            Each 2 point training will cost you 10 points, improving your chance of making a two pointer by 10%. <br/>
+            Each 3 point training will cost you 20 points, improving your chance of making a three pointer by 10%. <br/> <br/>
+        </p>
+
+        <p id="scoreguide">
+            <span id="winorlose">Keep Shooting.</span>
+        </p>
+
+        <img id="basketball"
+            src="https://cdn.pixabay.com/photo/2016/10/11/15/37/basketball-1731918_1280.png" onclick="shootTheBall()"
+        />
+
+
+        <p> <br/> <br/></p>
+        <p id="ourscore">
+            Current Percentage of Making a 2 Pointer: <span id="twopointpercentager">25</span>% <br/>
+            Current Percentage of Making a 3 Pointer: <span id="threepointpercentage">25</span>% <br/>
+        </p>
+        <button type="button" id="2pointbutton" onclick="improveTwoPtFunction()">2 Point Training</button>
+        <button type="button" id="3pointbutton" onclick="improveThreePtFunction()">3 Point Training</button>
+        <p id="buttonmessage"> <br/><span id="btnmessage">Try Using Points to Improve Your Technique.</span><br/></p>
+
+
+        <script src="/week4/jonah_qian/script.js" />
+    </body>
+</html>

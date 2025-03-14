@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 50px;
+}
+#cookie-btn {
+    font-size: 20px;
+    padding: 15px 30px;
+    cursor: pointer;
+    border: none;
+    background-color: #f4a261;
+    color: white;
+    border-radius: 10px;
+}
+#cookie-btn:hover {
+    background-color: #e76f51;
+}
+#counter {
+    font-size: 24px;
+    margin: 20px;
+}
