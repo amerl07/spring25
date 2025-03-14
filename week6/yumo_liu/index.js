@@ -12,13 +12,19 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => { //WHEN connecting
   console.log('A user connected');
-  io.emit('chat message', { //sending an OBJECT through 'chat message' event
+
+  socket.on("set nickname", (nickname) => { // event when user enters & set nickname
+    socket.nickname = nickname; // store nickname on the server
+    console.log(`${nickname} joined the chat`); // appears in terminal
+    
+    io.emit('chat message', { //sending an OBJECT through 'chat message' event
     nickname: "System",
-    message: "A new user has joined the chat",
+    message: `${nickname} has joined the chat`,
     timestamp: new Date().toISOString() //log a timestamp when user joins
   });
+});
 
-  socket.on('chat message', (msg) => { // WHEN user sends a message
+  socket.on('chat message', (msg) => { // event WHEN user sends a message
     io.emit('chat message', { 
       nickname: socket.nickname || "Anonymous", // Use nickname if set, otherwise default to "Anonymous"
       message: msg, //Actual message text
@@ -26,7 +32,7 @@ io.on('connection', (socket) => { //WHEN connecting
     }); //this event is received in client side as 'chatData' object
   });
 
-  socket.on('disconnect', () => { //WHEN disconnecting
+  socket.on('disconnect', () => { // event WHEN disconnecting
     console.log('A user disconnected');
     const userNickname = socket.nickname || "Anonymous"
     io.emit('chat message', { //sending an OBJECT through 'chat message' event
